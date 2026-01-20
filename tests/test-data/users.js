@@ -26,7 +26,7 @@ const signUpUser = {
       middleName: faker.person.middleName(),
       lastName: faker.person.lastName(),
       emailAddress: `user.signup${Date.now()}@fake.test`,      // Dynamic unique email for each test run
-      password: 'Test123,',
+      password: process.env.SIGNUP_PASSWORD,
       companyName: faker.company.name(),
     },
 
