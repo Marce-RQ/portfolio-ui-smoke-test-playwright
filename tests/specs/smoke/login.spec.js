@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import { LoginPage, Verify2FAPage } from '../../../pageObjectModel/pages/index.js'; // Ensure DashboardPage is not imported here
 import { HeaderSection } from '../../../pageObjectModel/sections/index.js'; // No DashboardPage import here
 import { loginUser } from '../../../test-data/users.js';
-import { getOtpfromAPP } from '../../../../helpers/index.js';
+import { getOtpfromAPP } from '../../../helpers/index.js';
 import dotenv from 'dotenv';
 dotenv.config();
 

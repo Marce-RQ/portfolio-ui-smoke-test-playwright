@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { signUpUser } from '../../../../test-data/users.js';
+import { signUpUser } from '../../../test-data/users.js';
 import { LoginPage, SignUpPageForm1, SignUpPageForm2 } from '../../../pageObjectModel/pages/index.js';
 import { HeaderSection } from '../../../pageObjectModel/sections/index.js';
 import { getSignUpLinkFromMongo } from '../../../helpers/mongoHelper.js';
