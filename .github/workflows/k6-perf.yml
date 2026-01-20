@@ -1,0 +1,59 @@
+# name: K6 Performance Tests
+
+# on:
+#   pull_request:
+#     branches: [main, master] # Adjust to your default branch (e.g., master)
+#   schedule:
+#     - cron: '0 2 * * *' # Runs nightly at 2 AM UTC (adjust time if needed)
+
+# jobs:
+#   perf:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v4
+
+#       - name: Setup k6name: Performance Tests
+
+# on:
+#   pull_request:
+#     branches: [main, master]
+#   schedule:
+#     - cron: '0 2 * * *'  # Nightly at 2 AM UTC
+#   workflow_dispatch:  # Manual trigger
+
+# jobs:
+#   perf:
+#     timeout-minutes: 10
+#     runs-on: ubuntu-latest
+#     env:
+#       ENV: 'dev'
+
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v4
+
+#       - name: Test connectivity to dev API
+#         run: curl -I https://api-c1-b1-crm.crmdevz.com/authentication || echo "Cannot reach dev API"
+
+#       - name: Setup k6
+#         uses: grafana/setup-k6-action@v1
+#         with:
+#           k6-version: latest
+
+#       - name: Run k6 performance test
+#         run: k6 run .github/k6/login.k6.js
+
+#       # Optional: Upload results
+#       - uses: actions/upload-artifact@v4
+#         if: ${{ !cancelled() }}
+#         with:
+#           name: k6-results
+#           path: results.json  # If you add --out json
+#           retention-days: 30
+#         uses: grafana/setup-k6-action@v1
+#         with:
+#           k6-version: latest
+
+#       - name: Run k6 performance test
+#         run: k6 run .github/k6/login.k6.js

@@ -1,0 +1,74 @@
+########################################
+# Node
+node_modules/
+
+########################################
+# Playwright outputs
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
+*.trace.zip
+traces/
+screenshots/
+videos/
+
+########################################
+# Env files (keep only the example tracked)
+.env*
+!.env.example
+.env.local
+.env.*.local
+.env.development
+.env.staging
+.env.production
+.git-credentials
+
+########################################
+# Secrets & certs
+*.pem
+*.key
+*.crt
+*.p12
+
+########################################
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+########################################
+# Coverage and caches
+coverage/
+.nyc_output/
+.cache/
+
+########################################
+# Build outputs
+dist/
+build/
+out/
+
+########################################
+# OS/editor noise
+.DS_Store
+.vscode/
+.idea/
+*.swp
+*~
+
+########################################
+# K6
+k6/
+myAccounts/
+tradeAccounts/
+
+########################################
+# Account related files
+tests/pageObjectModel/pages/myAccounts.page.js
+tests/specs/smoke/tradeAccounts/
+
