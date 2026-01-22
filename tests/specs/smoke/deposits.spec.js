@@ -2,6 +2,7 @@ import { test, expect } from '@playwright/test';
 import { paymentUser } from '../../../test-data/users.js';
 import { LoginPage, Verify2FAPage, DashboardPage, DepositsPage } from '../../../pageObjectModel/pages/index.js';
 import { getOtpfromAPP } from '../../../helpers/index.js';
+import { faker } from '@faker-js/faker';
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -12,7 +13,7 @@ test('Deposit flow and Payment Gateway handshake', async ({ page }) => {
   const dashboardPage = new DashboardPage(page);
   const depositPage = new DepositsPage(page);
   let otp;
-
+  const amount = faker.finance.amount(100, 500, 2);
   
   await loginPage.goto();
   await loginPage.enterUserCredentials(paymentUser.deposit.email, paymentUser.deposit.password);
@@ -26,8 +27,8 @@ test('Deposit flow and Payment Gateway handshake', async ({ page }) => {
   await depositPage.clickSelectWalletDropdown();
   await depositPage.selectUsdWallet();
   await depositPage.selectAmount();
-  await depositPage.enterAmount();
-  await depositPage.goToPaymentButton().click();
+  await depositPage.enterAmount(amount);
+  await depositPage.clickGoToPayment();
 
   // Assert: Payment Gateway connection
   await depositPage.gatewayBitcoinPaymentTitle().waitFor({ state: 'visible' });
