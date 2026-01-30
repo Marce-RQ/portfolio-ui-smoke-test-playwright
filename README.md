@@ -6,12 +6,12 @@ This project demonstrates how I design maintainable UI test automation using **P
 
 ## What this suite validates
 
-- **Sign-up**: multi-step registration (includes extracting the verification link from MongoDB)
-- **Login**: password + **TOTP (2FA app)** for regular and corporate users
-- **KYC**: user identity verification flow and **Sumsub** integration handshake
-- **Deposits**: flow to payment gateway and gateway handshake assertion
-- **Internal transfers**: wallet-to-wallet transfer scenarios
-- **Withdrawals**: flow to payment gateway and gateway handshake assertion
+- **Sign-up**: multi-step registration (includes extracting the verification link from MongoDB).
+- **Login**: password + **TOTP (2FA app)** for regular and corporate users.
+- **KYC**: user identity verification flow and **Sumsub** integration handshake.
+- **Deposits**: flow to payment gateway and gateway handshake assertion.
+- **Internal transfers**: wallet-to-wallet transfer scenarios, validating integration with **TraderApi**.
+- **Withdrawals**: flow to payment gateway and gateway handshake assertion.
 - **Logout**
 
 ## Implementation
