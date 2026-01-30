@@ -17,11 +17,6 @@ videos/
 # Env files (keep only the example tracked)
 .env*
 !.env.example
-.env.local
-.env.*.local
-.env.development
-.env.staging
-.env.production
 .git-credentials
 
 ########################################
@@ -60,15 +55,3 @@ out/
 .idea/
 *.swp
 *~
-
-########################################
-# K6
-k6/
-myAccounts/
-tradeAccounts/
-
-########################################
-# Account related files
-tests/pageObjectModel/pages/myAccounts.page.js
-tests/specs/smoke/tradeAccounts/
-

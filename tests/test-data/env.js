@@ -1,7 +1,7 @@
 const environments = {
   dev: {
-    baseUrl: 'https://white-label-broker.com',
-    apiUrl: 'https://api-white-label-broker.com',
+    baseUrl: 'https://dev.white-label-broker.com',
+    apiUrl: 'https://dev.api-white-label-broker.com',
   },
   stg: {
     baseUrl: 'https://staging.white-label-broker.com',
