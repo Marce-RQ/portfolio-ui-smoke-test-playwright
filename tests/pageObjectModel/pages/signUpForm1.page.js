@@ -6,10 +6,6 @@ export class SignUpPageForm1 {
     this.page = page;
   }
 
-  async goto() {
-    await this.page.goto(`${env.baseUrl}/signup`);
-  }
-
   //LOCATORS
   // Sign Up Form 1
   headerTitle = () => this.page.getByRole('heading', { name: 'Sign Up Now' });
@@ -34,6 +30,10 @@ export class SignUpPageForm1 {
   emailExistsErrorMessage = () => this.page.getByText('This email address already');
 
   // ACTIONS
+   async goto() {
+    await this.page.goto(`${env.baseUrl}/signup`);
+  }
+
   async enterNewUserDetails(firstName, middleName = '', lastName, emailAddress, password) {
     await this.firstNameTextBox().click();
     await this.firstNameTextBox().fill(firstName);

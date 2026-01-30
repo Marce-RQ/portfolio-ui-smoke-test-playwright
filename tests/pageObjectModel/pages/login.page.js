@@ -5,10 +5,6 @@ export class LoginPage {
     this.page = page;
   }
 
-  async goto() {
-    await this.page.goto(`${env.baseUrl}/login`);
-  }
-
   //LOCATORS
   // Login Form
   headerTitle = () => this.page.getByRole('heading', { name: 'Log In to Your Account' });
@@ -23,6 +19,10 @@ export class LoginPage {
   verifyEmailLink = () => this.page.getByRole('link', { name: 'Verify Email' });
 
   // ACTIONS
+  async goto() {
+    await this.page.goto(`${env.baseUrl}/login`);
+  }
+
   async enterUserCredentials(userEmail, userPassword) {
     await this.emailAddressTextBox().click();
     await this.emailAddressTextBox().fill(userEmail);

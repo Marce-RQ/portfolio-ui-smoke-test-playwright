@@ -5,10 +5,6 @@ export class DepositsPage {
     this.page = page;
     }
 
-  async goto() {
-    await this.page.goto(`${env.baseUrl}/deposits`);
-  }
-
   // LOCATORS
   // Deposit Form
   headerTitle = () => this.page.getByRole('heading', { name: 'Deposits', exact: true });
@@ -23,6 +19,10 @@ export class DepositsPage {
   gatewayBitcoinPaymentTitle = () => this.page.getByRole('heading', { name: /Crypto Deposit - Bitcoin/i });
 
   // ACTIONS
+   async goto() {
+    await this.page.goto(`${env.baseUrl}/deposits`);
+  }
+
   async clickDepositTypeDropdown() {
     await this.depositTypeDropdown().click();
   }

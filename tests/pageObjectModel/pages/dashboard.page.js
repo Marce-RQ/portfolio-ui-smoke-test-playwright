@@ -5,19 +5,15 @@ export class DashboardPage {
     this.page = page;
   }
 
-  async goto() {
-    await this.page.goto(`${env.baseUrl}/dashboard`);
-  }
-
   //LOCATORS
   // Dashboard Actions Cards
-  depositActionCard = () => this.page.getByRole('heading', { name: 'Deposit' });
-  withdrawActionCard = () => this.page.getByRole('heading', { name: 'Withdraw' });
-  myAccountsActionCard = () => this.page.getByRole('heading', { name: 'My Accounts' });
-  transferActionCard = () => this.page.getByRole('heading', { name: 'Internal Transfer' });
+  depositActionCard = () => this.page.getByRole('heading', { name: 'Deposit', exact: true });
+  withdrawActionCard = () => this.page.getByRole('heading', { name: 'Withdraw', exact: true });
+  myAccountsActionCard = () => this.page.getByRole('heading', { name: 'My Accounts', exact: true });
+  transferActionCard = () => this.page.getByRole('heading', { name: 'Internal Transfer', exact: true });
 
   // Wallet Table
-  walletContainerTitle = () => this.page.getByRole('heading', { name: 'Wallet' });
+  walletContainerTitle = () => this.page.getByRole('heading', { name: 'Wallet', exact: true });
   walletTable = () => this.page.locator('div').filter({ has: this.page.getByRole('table', { name: 'Wallet' }) });
 
   columnHeaderWallet = () => this.walletTable().getByRole('columnheader', { name: 'Wallet' });
@@ -53,6 +49,9 @@ export class DashboardPage {
   verifyButton = () => this.verificationContainer().getByRole('button', { name: 'Verify' });
 
   // ACTIONS
+  async goto() {
+    await this.page.goto(`${env.baseUrl}/dashboard`);
+  }
   async clickDepositActionCard() {
     await this.depositActionCard().click();
   }
@@ -69,3 +68,5 @@ export class DashboardPage {
     await this.verifyButton().click();
   }
 }
+
+

@@ -6,10 +6,6 @@ export class WithdrawPage {
     this.page = page;
   }
 
-  async goto() {
-    await this.page.goto(`${env.baseUrl}/withdrawals`);
-  }
-
   // LOCATORS
   // Withdraw Form
   headerTitle = () => this.page.getByRole('heading', { name: 'Withdraw', exact: true });
@@ -36,6 +32,9 @@ export class WithdrawPage {
   cancelWithdrawalButton = () => this.page.getByRole('button', { name: 'Cancel Withdrawal' });
 
   // ACTIONS
+  async goto() {
+    await this.page.goto(`${env.baseUrl}/withdrawals`);
+  }
 
   async clickWithdrawTypeDropdown() {
     await this.withdrawTypeDropdown().waitFor({ state: 'visible' });

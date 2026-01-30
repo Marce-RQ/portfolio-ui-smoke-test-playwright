@@ -3,10 +3,6 @@ export class Verify2FAPage {
     this.page = page;
   }
 
-  async goto() {
-    await this.page.goto(`${env.baseUrl}/verify-2fa`);
-  }
-
   //LOCATORS
   // OTP form
   headerTitle = () => this.page.getByRole('heading', { name: /Enter the OTP/i });
@@ -14,6 +10,10 @@ export class Verify2FAPage {
   submitButton = () => this.page.getByRole('button', { name: 'Submit' });
 
   // ACTIONS
+  async goto() {
+    await this.page.goto(`${env.baseUrl}/verify-2fa`);
+  }
+
   async enterOTP(otp) {
     await this.otpTextbox().waitFor({ state: 'visible' });
     await this.otpTextbox().fill(otp);

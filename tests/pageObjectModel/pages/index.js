@@ -5,6 +5,5 @@ export { SignUpPageForm1 } from './signUpForm1.page.js';
 export { SignUpPageForm2 } from './signUpForm2.page.js';
 export { VerificationPage } from './verification.page.js';
 export { DepositsPage } from './deposits.page.js';
-export { MyAccountsPage } from './myAccounts.page.js';
 export { TransfersPage } from './transfers.page.js';
 export { WithdrawPage } from './withdraw.page.js';

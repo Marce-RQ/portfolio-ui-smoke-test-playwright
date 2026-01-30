@@ -10,10 +10,6 @@ export class TransfersPage {
     this.page = page;
   }
 
-  async goto() {
-    await this.page.goto(`${env.baseUrl}/dashboard/transfers`);
-  }
-
   //LOCATORS
   // Transfers Form
   headerTitle = () => this.page.getByRole('heading', { name: 'Internal Transfer', exact: true });
@@ -50,6 +46,9 @@ export class TransfersPage {
 
   
   // ACTIONS
+  async goto() {
+    await this.page.goto(`${env.baseUrl}/dashboard/transfers`);
+  }
   async clickTransferTypeDropdown() {
     await this.transferTypeDropdown().click();
   }

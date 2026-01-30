@@ -3,10 +3,6 @@ export class VerificationPage {
     this.page = page;
   }
 
-  async goto() {
-    await this.page.goto('/dashboard/kyc');
-  }
-
   // LOCATORS
   identityVerificationTitle = () => this.page.getByRole('heading', { name: 'Identity Verification' });
   startVerificationButton = () => this.page.getByRole('button', { name: 'Start' });
@@ -20,6 +16,10 @@ export class VerificationPage {
   confirmButton = () => this.page.getByRole('button', { name: 'Confirm' });
 
   // ACTIONS
+  async goto() {
+    await this.page.goto('/dashboard/kyc');
+  }
+
   async clickStartVerificationButton() {
     await this.startVerificationButton().click();
   }
