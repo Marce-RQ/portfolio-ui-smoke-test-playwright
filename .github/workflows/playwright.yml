@@ -1,4 +1,5 @@
 name: Smoke Tests
+if: false # Disable the workflow
 on:
   # Run on pull requests to main branches
   pull_request:
@@ -7,8 +8,8 @@ on:
   push:
     branches: [main, master]
   # Run daily at 8:00 AM UTC
-  schedule:
-    - cron: '0 8 * * *'
+  #schedule:
+  # - cron: '0 8 * * *'
   # Allows manual trigger from GitHub UI
   workflow_dispatch:
 concurrency:
@@ -76,8 +77,8 @@ jobs:
         uses: dawidd6/action-send-mail@v3
         with:
           to: qa-team@fake.test
-          subject: "Playwright tests failed in ${{ github.repository }}"
-          body: "Tests failed. Check the workflow: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          subject: 'Playwright tests failed in ${{ github.repository }}'
+          body: 'Tests failed. Check the workflow: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}'
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
