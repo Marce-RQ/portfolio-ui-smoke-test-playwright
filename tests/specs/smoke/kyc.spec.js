@@ -1,30 +1,20 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from '../../fixtures/auth.fixture.js';
 import { verificationUser } from '../../test-data/users.js';
-import { LoginPage, Verify2FAPage, VerificationPage } from '../../pageObjectModel/pages/index.js';
+import { VerificationPage } from '../../pageObjectModel/pages/index.js';
 import { SumSubModal, LetsGetYouVerifiedSection } from '../../pageObjectModel/sections/index.js';
-import { getOtpfromAPP, resetKycUser } from '../../helpers/index.js';
+import { resetKycUser } from '../../helpers/index.js';
 import dotenv from 'dotenv';
 dotenv.config();
 
-  test('KYC user flow - SumSub hand-shake', async ({ page }) => {
-    
-  const loginPage = new LoginPage(page);
-  const verify2FAPage = new Verify2FAPage(page);
+test('KYC user flow - SumSub hand-shake', async ({ performLogin, page }) => {
   const letsGetYouVerifiedSection = new LetsGetYouVerifiedSection(page);
   const verificationPage = new VerificationPage(page);
   const sumSubModal = new SumSubModal(page);
-  let otp;
 
-  // Preparing user to NOT_VERIFIED state via Admin API
+  // Preparing user to NOT_VERIFIED state
   await resetKycUser(verificationUser.kyc.userId);
 
-  // Act
-  await loginPage.goto();
-  await loginPage.enterUserCredentials(verificationUser.kyc.email, verificationUser.kyc.password);
-  await loginPage.clickLoginButton();
-
-  otp = getOtpfromAPP(verificationUser.kyc);
-  await verify2FAPage.enterOTP(otp);
+  await performLogin(verificationUser.kyc);
 
   // CRM Modal Flow
   await letsGetYouVerifiedSection.waitForVisible();

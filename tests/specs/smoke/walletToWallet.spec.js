@@ -1,28 +1,18 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from '../../fixtures/auth.fixture.js';
 import { paymentUser } from '../../test-data/users.js';
-import { LoginPage, Verify2FAPage, DashboardPage, TransfersPage } from '../../pageObjectModel/pages/index.js';
-import { getOtpfromAPP } from '../../helpers/index.js';
-import { AdminApi } from '../../helpers/adminHelper.js';
+import { TransfersPage } from '../../pageObjectModel/pages/index.js';
 import dotenv from 'dotenv';
 dotenv.config();
 
-test('wallet to wallet transfer (USD to EUR)', async ({ page }) => {
-  const loginPage = new LoginPage(page);
-  const verify2FAPage = new Verify2FAPage(page);
-  const dashboardPage = new DashboardPage(page);
+test('wallet to wallet transfer (USD to EUR)', async ({ pageObjects, performLogin, page }) => {
   const transferPage = new TransfersPage(page);
   const amount = '1';
-  let otp;
 
-  await loginPage.goto();
-  await loginPage.enterUserCredentials(paymentUser.transfers.email, paymentUser.transfers.password);
-  await loginPage.clickLoginButton();
-  otp = getOtpfromAPP(paymentUser.transfers);
-  await verify2FAPage.enterOTP(otp);
+  await performLogin(paymentUser.transfers);
 
   // USD Wallet to EUR Wallet Transfer flow
-  await dashboardPage.transferActionCard().waitFor({ state: 'visible' });
-  await dashboardPage.clickTransferActionCard();
+  await pageObjects.dashboardPage.transferActionCard().waitFor({ state: 'visible' });
+  await pageObjects.dashboardPage.clickTransferActionCard();
   await transferPage.clickTransferTypeDropdown();
   await transferPage.selectWalletToWalletOption();
   await transferPage.clickTransferFromDropdown();
